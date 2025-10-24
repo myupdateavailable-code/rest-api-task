@@ -22,7 +22,6 @@ class Router implements RouterInterface
 
     public function registerRoute(Method $method, string $url, array $handler): Router
     {
-
         $urlWithReplacedPlaceholder = $this->matchRoute(
             $url,
             $this->uri,
@@ -45,7 +44,7 @@ class Router implements RouterInterface
         ];
 
         // fetching params for
-        $this->routerContainer[$method->value][$url]['params'] = empty($urlWithReplacedPlaceholder['params'])?
+        $this->routerContainer[$method->value][$url]['params'] = empty($urlWithReplacedPlaceholder['params']) ?
             [] : $urlWithReplacedPlaceholder['params'];
 
         // registering last route. Later this route will get auth=true on demand
@@ -79,8 +78,10 @@ class Router implements RouterInterface
         $regex = "#^" . $regex . "$#";
 
         if (preg_match($regex, $uri, $matches)) {
-            $result['params'] =  array_filter(
-                $matches, fn($key) => !is_int($key), ARRAY_FILTER_USE_KEY
+            $result['params'] = array_filter(
+                $matches,
+                fn($key) => !is_int($key),
+                ARRAY_FILTER_USE_KEY
             );
         }
 

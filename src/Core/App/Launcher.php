@@ -26,7 +26,8 @@ class Launcher
         $c->set(QueryManager::class, new QueryManager($c->get(Database::class)->getConnection()));
         $c->set(AuthService::class, new AuthService($c->get(QueryManager::class)));
         $c->set(UserService::class, new UserService($c->get(QueryManager::class)));
-        $c->set(RequestDTO::class,
+        $c->set(
+            RequestDTO::class,
             new RequestDTO(
                 $_SERVER['REQUEST_METHOD'],
                 getallheaders(),
