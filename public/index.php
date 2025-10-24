@@ -12,7 +12,7 @@ use App\Core\App\Launcher;
 use App\Core\DependencyContainer;
 use App\Core\Http\Response;
 
-require '../vendor/autoload.php';
+require __DIR__.'/../vendor/autoload.php';
 
 $router = include __DIR__ . '/../config/routes.php';
 
