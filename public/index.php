@@ -12,7 +12,7 @@ use App\Core\App\Launcher;
 use App\Core\DependencyContainer;
 use App\Core\Http\Response;
 
-require __DIR__.'/../vendor/autoload.php';
+require __DIR__ . '/../vendor/autoload.php';
 
 $router = include __DIR__ . '/../config/routes.php';
 
@@ -30,6 +30,7 @@ $launcher->initDependencies($container);
 
 $guard = new Guard();
 $protect = $guard->protectHandler($handler, $container);
+
 if (null === $protect) {
     $response->error(401);
 }
