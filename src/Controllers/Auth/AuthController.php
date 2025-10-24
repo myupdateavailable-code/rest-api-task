@@ -7,6 +7,7 @@ namespace App\Controllers\Auth;
 use App\Controllers\Controller;
 
 use App\DTO\RequestDTO;
+use App\Helpers\Auth\Validate;
 use App\Services\Auth\AuthService;
 
 class AuthController extends Controller
@@ -38,6 +39,10 @@ class AuthController extends Controller
         // prepare credentials
         $email = $request->post('email');
         $password = $request->post('password');
+
+        if (!Validate::authCredentialsEmail($email) || !Validate::authCredentialsPassword($password)) {
+            return $this->jsonResponse(['status' => 'error'], 403);
+        }
 
         $credentials = array_merge($email, $password);
 
