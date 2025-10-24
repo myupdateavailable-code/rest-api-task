@@ -19,6 +19,7 @@ class UserService
 
     public function getAllUsers(array $search = null): ?array
     {
+        // preparing query
         $query = 'SELECT * FROM users';
 
         if (!empty($search)) {
@@ -32,6 +33,7 @@ class UserService
             $query .= implode(' AND ', $parts);
         }
 
+        // fetching users
         return $this->queryManager->select($query, $search);
     }
 
@@ -45,6 +47,7 @@ class UserService
 
     public function updateUser(int $userId, array $data): bool
     {
+        // filter only relevant keys
         foreach ($data as $key => $value) {
             if (!in_array($key, ['email', 'password', 'address', 'age'])) {
                 unset($data[$key]);
@@ -55,6 +58,7 @@ class UserService
             return false;
         }
 
+        // validating and preparing password if exists
         if (array_key_exists('password', $data)) {
             if (false === Validate::authCredentialsPassword($data)) {
                 return false;
@@ -62,12 +66,14 @@ class UserService
             $data['password'] = password_hash($data['password'], PASSWORD_DEFAULT);
         }
 
+        // validating email
         if (array_key_exists('email', $data)) {
             if (false === Validate::authCredentialsEmail($data)) {
                 return false;
             }
         }
 
+        // preparing placeholders for query
         $mappedUserData = array_map(function ($keys) {
             return "$keys = :$keys";
         }, array_keys($data));

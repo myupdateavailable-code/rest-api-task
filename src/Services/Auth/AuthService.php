@@ -88,6 +88,7 @@ class AuthService
             return null;
         }
 
+        // fetching token. Can be added to AuthDTO as an option (AuthDTO modify required)
         $token = str_replace('Bearer ', '', $token);
 
         return $this->queryManager->execute(
