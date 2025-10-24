@@ -24,7 +24,10 @@ class AuthController extends Controller
         $token = $auth->login($credentials);
 
         if (!$token) {
-            return $this->jsonResponse(['status' => 'error'], 403);
+            return $this->jsonResponse([
+                'status' => 'error',
+                'message' => 'Invalid credentials',
+            ], 403);
         }
 
         return $this->jsonResponse(
@@ -41,7 +44,10 @@ class AuthController extends Controller
         $password = $request->post('password');
 
         if (!Validate::authCredentialsEmail($email) || !Validate::authCredentialsPassword($password)) {
-            return $this->jsonResponse(['status' => 'error'], 403);
+            return $this->jsonResponse([
+                'status' => 'error',
+                'message' => 'Invalid credentials',
+            ], 403);
         }
 
         $credentials = array_merge($email, $password);
@@ -50,10 +56,16 @@ class AuthController extends Controller
         $userCreated = $auth->register($credentials);
 
         if (null === $userCreated) {
-            return $this->jsonResponse(['status' => 'error'], 403);
+            return $this->jsonResponse([
+                'status' => 'error',
+                'message' => 'User could not be created'
+            ], 403);
         }
 
-        return $this->jsonResponse(['status' => 'success', 'message' => ['user_id' => $userCreated]], 201);
+        return $this->jsonResponse([
+            'status' => 'success',
+            'message' => ['user_id' => $userCreated]
+        ], 201);
     }
 
     public function logout(AuthService $auth, RequestDTO $request)
@@ -64,10 +76,14 @@ class AuthController extends Controller
 
         // return error if unable to logout existing token
         if (!$logout) {
-            return $this->jsonResponse(['status' => 'error'], 403);
+            return $this->jsonResponse([
+                'status' => 'error',
+            ], 403);
         }
 
-        return $this->jsonResponse(['status' => 'success']);
+        return $this->jsonResponse([
+            'status' => 'success'
+        ]);
     }
 
 }

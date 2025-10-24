@@ -29,7 +29,10 @@ class UserController extends Controller
     public function update(int $id, UserService $service, RequestDTO $request, AuthDTO $auth)
     {
         if ($auth->id() != $id) {
-            return $this->jsonResponse(['message' => 'You are not authorized'], 403);
+            return $this->jsonResponse([
+                'status' => 'error',
+                'message' => 'You are not authorized'
+            ], 403);
         }
 
         $data = !empty($request->json()) ?
@@ -40,11 +43,13 @@ class UserController extends Controller
 
         if (!$userUpdated) {
             return $this->jsonResponse([
+                'status' => 'error',
                 'message' => 'Unable to update user'
             ], 500);
         }
 
         return $this->jsonResponse([
+            'status' => 'success',
             'message' => 'User updated',
         ]);
     }
@@ -53,6 +58,7 @@ class UserController extends Controller
     {
         if ($auth->id() != $id) {
             return $this->jsonResponse([
+                'status' => 'error',
                 'message' => 'You are not authorized',
             ], 403);
         }
@@ -61,11 +67,13 @@ class UserController extends Controller
 
         if (!$userDeleted) {
             return $this->jsonResponse([
+                'status' => 'error',
                 'message' => 'Unable to delete user'
             ], 500);
         }
 
         return $this->jsonResponse([
+            'status' => 'success',
             'message' => 'User deleted',
         ]);
     }
