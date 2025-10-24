@@ -19,7 +19,7 @@ class UserController extends Controller
         );
     }
 
-    public function show($id, UserService $service)
+    public function show(int $id, UserService $service)
     {
         return $this->jsonResponse(
             $service->getUserById($id)
@@ -49,7 +49,7 @@ class UserController extends Controller
         ]);
     }
 
-    public function delete($id, UserService $service, AuthDTO $auth)
+    public function delete(int $id, UserService $service, AuthDTO $auth)
     {
         if ($auth->id() != $id) {
             return $this->jsonResponse([
