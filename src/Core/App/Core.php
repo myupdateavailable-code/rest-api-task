@@ -30,7 +30,7 @@ class Core
                 if (null === $c->get($className)) {
                     return [
                         'status' => 'error',
-                        'payload' => "Class {$className} does not exist. Initiate in DependencyContainer."
+                        'payload' => "Class {$className} does not exist. Initiate in DependencyContainer on launch."
                     ];
                 }
 
