@@ -31,6 +31,7 @@ class Core
             }
         }
 
+        // running controller and method, the result will be transmitted to json response
         return $refMethod->invokeArgs(new $controllerName(), $methodArgs);
     }
 

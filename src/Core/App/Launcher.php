@@ -22,10 +22,15 @@ class Launcher
 
     public function initDependencies(DependencyContainerInterface $c): void
     {
+        // DB dependency
         $c->set(Database::class, new Database());
+        // QueryManager, need DB
         $c->set(QueryManager::class, new QueryManager($c->get(Database::class)->getConnection()));
+        // Auth service, uses QueryManager
         $c->set(AuthService::class, new AuthService($c->get(QueryManager::class)));
+        // User service, uses QueryManager
         $c->set(UserService::class, new UserService($c->get(QueryManager::class)));
+        // Request dto, contains request data
         $c->set(
             RequestDTO::class,
             new RequestDTO(
@@ -40,6 +45,7 @@ class Launcher
 
     public function initUser(DependencyContainerInterface $c): bool
     {
+        // fetching Authorization header from Request dto container
         $header = $c->get(RequestDTO::class)->header('Authorization');
         if (null === $header) {
             return false;
@@ -49,11 +55,13 @@ class Launcher
         }
 
         $token = str_replace('Bearer ', '', $header['Authorization']);
+        // Querying user. If needed.
         $user = $c->get(AuthService::class)->getUserByToken($token);
         if (null === $user) {
             return false;
         }
 
+        // Placing user to Auth dto to use it in app.
         $c->set(AuthDTO::class, AuthDTO::create($user['id'], $user['email']));
 
         return true;
