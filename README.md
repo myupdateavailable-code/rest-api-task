@@ -13,7 +13,7 @@ cd rest-api-task
 
 ### 2. Configure connection and start docker to migrate data
 - Copy `config/database.php.example` as `config/database.php`.
-- Move to `docker/` and run `docker compose up`. Credentials in `config/database.php.example` 
+- Move to `docker/` and run `docker compose up -d`. Credentials in `config/database.php.example` 
 is valid for docker connection. No changes needed.
 
 
