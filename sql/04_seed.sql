@@ -1,0 +1,20 @@
+INSERT INTO users (email, address, age, password) VALUES ('user@example.com','Kyiv, Obolon 1',30,'$2y$10$YUTLQWnOd77zdNEq8aTyf.JfpSzxbwV4IYUaxKeuVG23mjAlXWV3u');
+INSERT INTO users (email, address, age, password) VALUES ('work@example.com','Svobody Avenue, 28', 32,'$2y$10$YUTLQWnOd77zdNEq8aTyf.JfpSzxbwV4IYUaxKeuVG23mjAlXWV3u');
+INSERT INTO users (email, address, age, password) VALUES ('home@example.com','Lviv, Svobody Avenue 3', 25,'$2y$10$YUTLQWnOd77zdNEq8aTyf.JfpSzxbwV4IYUaxKeuVG23mjAlXWV3u');
+INSERT INTO users (email, address, age, password) VALUES ('john@example.com','Soborna 2',29,'$2y$10$YUTLQWnOd77zdNEq8aTyf.JfpSzxbwV4IYUaxKeuVG23mjAlXWV3u');
+INSERT INTO users (email, address, age, password) VALUES ('doe@example.com','Kyiv',22,'$2y$10$YUTLQWnOd77zdNEq8aTyf.JfpSzxbwV4IYUaxKeuVG23mjAlXWV3u');
+INSERT INTO users (email, address, age, password) VALUES ('dwight.schrute@example.com','1725 Slough Avenue',22,'$2y$10$YUTLQWnOd77zdNEq8aTyf.JfpSzxbwV4IYUaxKeuVG23mjAlXWV3u');
+INSERT INTO users (email, address, age, password) VALUES ('jim.halpert@example.com','Scranton, 1725 Slough Avenue',22,'$2y$10$YUTLQWnOd77zdNEq8aTyf.JfpSzxbwV4IYUaxKeuVG23mjAlXWV3u');
+INSERT INTO users (email, address, age, password) VALUES ('kevin@example.com','Albany, 3245 Maplewood Street',27,'$2y$10$YUTLQWnOd77zdNEq8aTyf.JfpSzxbwV4IYUaxKeuVG23mjAlXWV3u');
+INSERT INTO users (email, address, age, password) VALUES ('sarah@example.com','Dayton, 7423 Willow Creek Road',21,'$2y$10$YUTLQWnOd77zdNEq8aTyf.JfpSzxbwV4IYUaxKeuVG23mjAlXWV3u');
+INSERT INTO users (email, address, age, password) VALUES ('emily@example.com','Rochester, 1869 Pinehill Drive',32,'$2y$10$YUTLQWnOd77zdNEq8aTyf.JfpSzxbwV4IYUaxKeuVG23mjAlXWV3u');
+INSERT INTO users (email, address, age, password) VALUES ('lana@example.com','Lincoln, 5742 Cedar Bluff Lane',34,'$2y$10$YUTLQWnOd77zdNEq8aTyf.JfpSzxbwV4IYUaxKeuVG23mjAlXWV3u');
+INSERT INTO users (email, address, age, password) VALUES ('dave@example.com','Austin, 9126 Oakridge Avenue',32,'$2y$10$YUTLQWnOd77zdNEq8aTyf.JfpSzxbwV4IYUaxKeuVG23mjAlXWV3u');
+INSERT INTO users (email, address, age, password) VALUES ('bruice@example.com','Columbus, 4398 Elmstone Road',27,'$2y$10$YUTLQWnOd77zdNEq8aTyf.JfpSzxbwV4IYUaxKeuVG23mjAlXWV3u');
+INSERT INTO users (email, address, age, password) VALUES ('kail@example.com','Syracuse, 2815 Rosewood Lane',26,'$2y$10$YUTLQWnOd77zdNEq8aTyf.JfpSzxbwV4IYUaxKeuVG23mjAlXWV3u');
+INSERT INTO users (email, address, age, password) VALUES ('peter@example.com','Denver, 5239 Lakeview Boulevard',27,'$2y$10$YUTLQWnOd77zdNEq8aTyf.JfpSzxbwV4IYUaxKeuVG23mjAlXWV3u');
+INSERT INTO users (email, address, age, password) VALUES ('marilyn@example.com','Scranton, 1725 Slough Avenue',21,'$2y$10$YUTLQWnOd77zdNEq8aTyf.JfpSzxbwV4IYUaxKeuVG23mjAlXWV3u');
+INSERT INTO users (email, address, age, password) VALUES ('ken@example.com','Hartford, 7712 Brookstone Drive',34,'$2y$10$YUTLQWnOd77zdNEq8aTyf.JfpSzxbwV4IYUaxKeuVG23mjAlXWV3u');
+
+INSERT INTO users_token (user_id, token) VALUES ('1','d39e201ba4621bcf43589023fe79502e31373539383533313234');
+INSERT INTO users_token (user_id, token) VALUES ('2','bd9be42db586e1e9a29689e17848b81f31373631323332313132');

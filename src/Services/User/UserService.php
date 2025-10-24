@@ -1,0 +1,83 @@
+<?php
+
+declare(strict_types=1);
+
+namespace App\Services\User;
+
+use App\Core\QueryManager\QueryManager;
+
+class UserService
+{
+
+    private QueryManager $queryManager;
+
+    public function __construct(QueryManager $queryManager)
+    {
+        $this->queryManager = $queryManager;
+    }
+
+    public function getAllUsers(array $search = null): ?array
+    {
+        $query = 'SELECT * FROM users';
+
+        if (!empty($search))
+        {
+            $parts = [];
+            $query .= ' WHERE ';
+            foreach ($search as $key => &$value)
+            {
+                $parts[] = $key . ' LIKE :' . $key;
+                $value = '%' . $value . '%';
+            }
+            $query .= implode(' AND ', $parts);
+        }
+
+        return $this->queryManager->select($query, $search);
+    }
+
+    public function getUserById(int $userId): ?array
+    {
+        return $this->queryManager->select(
+            'SELECT * FROM users WHERE id = :id',
+            ['id' => $userId]
+        );
+    }
+
+    public function updateUser(int $userId, array $data): bool
+    {
+        foreach ($data as $key => $value) {
+             if (!in_array($key, ['email', 'password', 'address', 'age'])) {
+                unset($data[$key]);
+            }
+        }
+
+        if (empty($data)) {
+            return false;
+        }
+
+        if (array_key_exists('password', $data)) {
+            $data['password'] = password_hash($data['password'], PASSWORD_DEFAULT);
+        }
+
+        $mappedUserData = array_map(function ($keys) {
+            return "$keys = :$keys";
+        }, array_keys($data));
+
+        $query = "UPDATE users SET ";
+        $query .= implode(' , ', $mappedUserData);
+        $query .= " WHERE id = :id";
+
+        return $this->queryManager->execute(
+            $query, array_merge($data, ['id' => $userId])
+        );
+    }
+
+    public function deleteUser(int $userId): bool
+    {
+        return $this->queryManager->execute(
+            'DELETE FROM users WHERE id = :id',
+            ['id' => $userId]
+        );
+    }
+
+}

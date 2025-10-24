@@ -1,0 +1,19 @@
+{
+  "name": "user/rest-api",
+  "type": "project",
+  "autoload": {
+    "psr-4": {
+      "App\\": "src/"
+    }
+  },
+  "authors": [
+    {
+      "name": "Solomon",
+      "email": "work.vladshamrai@gmail.com"
+    }
+  ],
+  "minimum-stability": "dev",
+  "require": {
+    "ext-pdo": "*"
+  }
+}
