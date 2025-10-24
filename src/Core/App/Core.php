@@ -25,6 +25,15 @@ class Core
             // check if type is Builtin, means type IS A class (otherwise it's not needed to be initialized)
             if ($type && !$type->isBuiltin()) {
                 $className = $type->getName();
+
+                // Return message if class not initiated in Dependency Container as expected
+                if (null === $c->get($className)) {
+                    return [
+                        'status' => 'error',
+                        'payload' => "Class {$className} does not exist. Initiate in DependencyContainer."
+                    ];
+                }
+
                 $methodArgs[] = $c->get($className);
             } elseif (!empty($params)) {
                 $methodArgs[] = array_shift($params);
