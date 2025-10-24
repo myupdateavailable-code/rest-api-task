@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Services\User;
 
 use App\Core\QueryManager\QueryManager;
+use App\Helpers\Auth\Validate;
 
 class UserService
 {
@@ -55,7 +56,16 @@ class UserService
         }
 
         if (array_key_exists('password', $data)) {
+            if (false === Validate::authCredentialsPassword($data)) {
+                return false;
+            }
             $data['password'] = password_hash($data['password'], PASSWORD_DEFAULT);
+        }
+
+        if (array_key_exists('email', $data)) {
+            if (false === Validate::authCredentialsEmail($data)) {
+                return false;
+            }
         }
 
         $mappedUserData = array_map(function ($keys) {
