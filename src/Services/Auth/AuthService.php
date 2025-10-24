@@ -42,7 +42,8 @@ class AuthService
 
         // clear old sessions
         $this->queryManager->execute(
-            'DELETE FROM `users_token` WHERE `user_id` = :user_id', ['user_id' => $user[0]['id']]
+            'DELETE FROM `users_token` WHERE `user_id` = :user_id',
+            ['user_id' => $user[0]['id']]
         );
 
         // Let's generate token for our user
@@ -86,6 +87,7 @@ class AuthService
         if (null === $token) {
             return null;
         }
+
         $token = str_replace('Bearer ', '', $token);
 
         return $this->queryManager->execute(

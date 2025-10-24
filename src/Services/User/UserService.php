@@ -20,12 +20,11 @@ class UserService
     {
         $query = 'SELECT * FROM users';
 
-        if (!empty($search))
-        {
+        if (!empty($search)) {
             $parts = [];
             $query .= ' WHERE ';
-            foreach ($search as $key => &$value)
-            {
+
+            foreach ($search as $key => &$value) {
                 $parts[] = $key . ' LIKE :' . $key;
                 $value = '%' . $value . '%';
             }
@@ -46,7 +45,7 @@ class UserService
     public function updateUser(int $userId, array $data): bool
     {
         foreach ($data as $key => $value) {
-             if (!in_array($key, ['email', 'password', 'address', 'age'])) {
+            if (!in_array($key, ['email', 'password', 'address', 'age'])) {
                 unset($data[$key]);
             }
         }
@@ -68,7 +67,8 @@ class UserService
         $query .= " WHERE id = :id";
 
         return $this->queryManager->execute(
-            $query, array_merge($data, ['id' => $userId])
+            $query,
+            array_merge($data, ['id' => $userId])
         );
     }
 

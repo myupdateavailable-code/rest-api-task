@@ -7,7 +7,6 @@ namespace App\Helpers\Http;
 /**
  * Helper for Router
  */
-
 enum Method: string
 {
     case get = 'GET';
