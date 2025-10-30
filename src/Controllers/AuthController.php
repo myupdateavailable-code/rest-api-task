@@ -29,9 +29,11 @@ class AuthController extends Controller
         }
 
         return $this->jsonResponse(
-            ['status' => 'success'],
+            [
+                'status' => 'success',
+                'token' => $token,
+            ],
             200,
-            ["Authorization: Bearer $token"]
         );
     }
 
