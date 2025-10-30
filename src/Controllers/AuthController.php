@@ -28,13 +28,10 @@ class AuthController extends Controller
             ], 403);
         }
 
-        return $this->jsonResponse(
-            [
+        return $this->jsonResponse([
                 'status' => 'success',
                 'token' => $token,
-            ],
-            200,
-        );
+            ]);
     }
 
     public function register(AuthService $auth, RequestDTO $request)
