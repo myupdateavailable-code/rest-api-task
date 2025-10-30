@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace App\Interfaces;
 
-use App\Core\Router;
+use App\Core\Http\Router;
 use App\Helpers\Http\Method;
 
 interface RouterInterface

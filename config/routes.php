@@ -5,7 +5,7 @@ declare(strict_types=1);
 use App\Controllers\AuthController;
 use App\Controllers\UserController;
 use App\Controllers\WelcomeController;
-use App\Core\Router;
+use App\Core\Http\Router;
 use App\Helpers\Http\Method;
 
 $router = new Router();
