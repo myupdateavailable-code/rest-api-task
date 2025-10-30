@@ -4,13 +4,13 @@ declare(strict_types=1);
 
 use App\Controllers\Auth\AuthController;
 use App\Controllers\User\UserController;
-use App\Controllers\Welcome;
+use App\Controllers\WelcomeController;
 use App\Core\Router;
 use App\Helpers\Http\Method;
 
 $router = new Router();
 
-$router->registerRoute(Method::get, '/', [Welcome::class, 'index']);
+$router->registerRoute(Method::get, '/', [WelcomeController::class, 'index']);
 
 $router->registerRoute(Method::get, '/users', [UserController::class, 'index'])->auth();
 $router->registerRoute(Method::get, '/users/:id', [UserController::class, 'show'])->auth();

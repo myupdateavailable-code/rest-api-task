@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace App\Controllers;
 
-class Welcome extends Controller
+class WelcomeController extends Controller
 {
 
     public function index()
