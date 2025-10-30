@@ -2,9 +2,8 @@
 
 declare(strict_types=1);
 
-namespace App\Controllers\User;
+namespace App\Controllers;
 
-use App\Controllers\Controller;
 use App\DTO\Auth\AuthDTO;
 use App\DTO\RequestDTO;
 use App\Services\User\UserService;

@@ -2,9 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\Controllers\Auth;
-
-use App\Controllers\Controller;
+namespace App\Controllers;
 
 use App\DTO\RequestDTO;
 use App\Helpers\Auth\Validate;

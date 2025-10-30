@@ -2,8 +2,8 @@
 
 declare(strict_types=1);
 
-use App\Controllers\Auth\AuthController;
-use App\Controllers\User\UserController;
+use App\Controllers\AuthController;
+use App\Controllers\UserController;
 use App\Controllers\WelcomeController;
 use App\Core\Router;
 use App\Helpers\Http\Method;
