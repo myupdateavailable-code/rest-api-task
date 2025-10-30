@@ -6,7 +6,7 @@ namespace App\Core\App;
 
 use App\Core\Database;
 use App\Core\QueryManager\QueryManager;
-use App\DTO\Auth\AuthDTO;
+use App\DTO\AuthDTO;
 use App\DTO\RequestDTO;
 use App\Interfaces\DependencyContainerInterface;
 use App\Interfaces\RouterInterface;

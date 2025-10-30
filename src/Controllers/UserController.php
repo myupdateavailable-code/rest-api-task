@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace App\Controllers;
 
-use App\DTO\Auth\AuthDTO;
+use App\DTO\AuthDTO;
 use App\DTO\RequestDTO;
 use App\Services\User\UserService;
 
