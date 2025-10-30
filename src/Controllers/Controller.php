@@ -4,12 +4,10 @@ declare(strict_types=1);
 
 namespace App\Controllers;
 
-use App\Interfaces\ControllerInterface;
-
 /**
  * Main controller. Unifies response.
  */
-abstract class Controller implements ControllerInterface
+abstract class Controller
 {
     public function jsonResponse(array $message, int $statusCode = 200, array $headers = null): array
     {

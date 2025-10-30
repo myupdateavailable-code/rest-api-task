@@ -4,7 +4,9 @@ declare(strict_types=1);
 
 namespace App\Core;
 
-class Database
+use App\Interfaces\DatabaseConnectionInterface;
+
+class Database implements DatabaseConnectionInterface
 {
     private \PDO $connection;
 
