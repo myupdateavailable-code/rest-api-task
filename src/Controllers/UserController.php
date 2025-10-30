@@ -6,7 +6,7 @@ namespace App\Controllers;
 
 use App\DTO\AuthDTO;
 use App\DTO\RequestDTO;
-use App\Services\User\UserService;
+use App\Services\UserService;
 
 class UserController extends Controller
 {

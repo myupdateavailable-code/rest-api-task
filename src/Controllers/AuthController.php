@@ -6,7 +6,7 @@ namespace App\Controllers;
 
 use App\DTO\RequestDTO;
 use App\Helpers\Auth\Validate;
-use App\Services\Auth\AuthService;
+use App\Services\AuthService;
 
 class AuthController extends Controller
 {

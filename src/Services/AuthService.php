@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\Services\Auth;
+namespace App\Services;
 
 use App\Core\QueryManager\QueryManager;
 use App\Helpers\Auth\Validate;

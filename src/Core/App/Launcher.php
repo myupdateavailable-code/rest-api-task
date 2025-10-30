@@ -10,8 +10,8 @@ use App\DTO\AuthDTO;
 use App\DTO\RequestDTO;
 use App\Interfaces\DependencyContainerInterface;
 use App\Interfaces\RouterInterface;
-use App\Services\Auth\AuthService;
-use App\Services\User\UserService;
+use App\Services\AuthService;
+use App\Services\UserService;
 
 class Launcher
 {
