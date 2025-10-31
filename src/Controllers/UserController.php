@@ -34,9 +34,14 @@ class UserController extends Controller
             ], 403);
         }
 
-        $data = !empty($request->json()) ?
-            json_decode($request->json(), true) :
-            $request->post();
+        $data = json_decode($request->json(), true);
+
+        if (empty($data)) {
+            return $this->jsonResponse([
+                'status' => 'error',
+                'message' => 'Data is empty'
+            ]);
+        }
 
         $userUpdated = $service->updateUser($id, $data);
 

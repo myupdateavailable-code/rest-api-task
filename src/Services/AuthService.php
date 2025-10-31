@@ -17,16 +17,16 @@ class AuthService
         $this->queryManager = $queryManager;
     }
 
-    public function login(array $credentials): ?string
+    public function login(string $email, string $password): ?string
     {
         // Selecting user
         $user = $this->queryManager->select(
             'SELECT id, email, password FROM `users` WHERE `email` = :email',
-            ['email' => $credentials['email']]
+            ['email' => $email]
         );
 
         // return null if empty or wrong credentials
-        if (!Validate::authCredentials($credentials)) {
+        if (!Validate::authCredentials([$email, $password])) {
             return null;
         }
 
@@ -35,7 +35,7 @@ class AuthService
             empty($user) ||
             !isset($user[0]) ||
             !isset($user[0]['password']) ||
-            !password_verify($credentials['password'], $user[0]['password'])
+            !password_verify($password, $user[0]['password'])
         ) {
             return null;
         }
