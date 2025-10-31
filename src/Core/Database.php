@@ -16,7 +16,11 @@ class Database implements DatabaseConnectionInterface
     public function __construct(array $config = null)
     {
         if (null === $config) {
-            $config = include __DIR__ . '/../../config/database.php';
+            $configFile = __DIR__ . '/../../config/database.php';
+            if (!is_file($configFile)) {
+                throw new \PDOException('Database configuration file not found');
+            }
+            $config = include $configFile;
         }
 
         $this->connection = new \PDO(
