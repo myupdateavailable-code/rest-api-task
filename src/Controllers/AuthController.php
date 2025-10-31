@@ -12,14 +12,17 @@ class AuthController extends Controller
 {
     public function login(AuthService $auth, RequestDTO $request)
     {
-        // prepare credentials
-        $email = $request->post('email');
-        $password = $request->post('password');
+        $data = json_decode($request->json(), true);
+        if (empty($data)) return $this->jsonResponse([
+            'status' => 'error',
+            'message' => 'Invalid credentials',
+        ]);
 
-        $credentials = array_merge($email, $password);
+        $email = $data['email'] ?? "";
+        $password = $data['password'] ?? "";
 
         // login user and return token
-        $token = $auth->login($credentials);
+        $token = $auth->login($email, $password);
 
         if (!$token) {
             return $this->jsonResponse([
@@ -36,9 +39,14 @@ class AuthController extends Controller
 
     public function register(AuthService $auth, RequestDTO $request)
     {
-        // prepare credentials
-        $email = $request->post('email');
-        $password = $request->post('password');
+        $data = json_decode($request->json(), true);
+        if (empty($data)) return $this->jsonResponse([
+            'status' => 'error',
+            'message' => 'Invalid credentials',
+        ]);
+
+        $email = $data['email'] ?? "";
+        $password = $data['password'] ?? "";
 
         if (!Validate::authCredentialsEmail($email) || !Validate::authCredentialsPassword($password)) {
             return $this->jsonResponse([
